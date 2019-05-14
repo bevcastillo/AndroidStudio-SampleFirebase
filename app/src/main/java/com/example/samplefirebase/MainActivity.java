@@ -7,10 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText idno, lname, fname;
-    Button send;
+    Button add, update, delete, view;
+    Firebase firebaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +24,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         idno = (EditText) findViewById(R.id.idnumber);
         lname = (EditText) findViewById(R.id.lname);
         fname = (EditText) findViewById(R.id.fname);
-        send = (Button) findViewById(R.id.sendbtn);
+        add = (Button) findViewById(R.id.addbtn);
+        update = (Button) findViewById(R.id.editbtn);
+        delete = (Button) findViewById(R.id.delbtn);
+        view = (Button) findViewById(R.id.viewbtn);
 
-        send.setOnClickListener(this);
+
+        add.setOnClickListener(this);
+        update.setOnClickListener(this);
+        delete.setOnClickListener(this);
+        view.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getApplicationContext(), "Information successfully sent!", Toast.LENGTH_SHORT).show();
+
+        switch (v.getId()){
+            case R.id.addbtn:
+                Toast.makeText(getApplicationContext(),"You have clicked add button", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.editbtn:
+                Toast.makeText(getApplicationContext(),"You have clicked edit button", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.delbtn:
+                Toast.makeText(getApplicationContext(),"You have clicked delete button", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.viewbtn:
+                Toast.makeText(getApplicationContext(),"You have clicked view button", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
